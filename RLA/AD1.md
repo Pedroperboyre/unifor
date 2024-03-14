@@ -54,10 +54,12 @@ F --> G(A=B)
 G --> H(Z=A)
 H --> I{{A, B}}
 I --> J([FIM])
+```
 
 #### Pseudocódigo (0.5 ponto)
 
 ### Pseudocódigo
+
 ```
   Algoritmo Determinar A e B
   Declare A, B,  Z: float
@@ -68,7 +70,7 @@ I --> J([FIM])
   LEIA B
   B=Z 
   B=A
-  A==Z
+  A=Z
   FIM_ALGORÌTMO
   
   ```
