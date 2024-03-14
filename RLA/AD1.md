@@ -9,8 +9,8 @@
 **Aluno(a):** preencha com seus dados <br>
 **Matrícula:** preencha com seus dados <br>
 
-**1a chamada (Sim/Não):** preencha com a opção correta <br>
-**2a chamada (Sim/Não):** preencha com a opção correta
+**1a chamada (Sim/Não):** Sim
+**2a chamada (Sim/Não):** Não
 
 # Avaliação Diagnóstica 1
 
