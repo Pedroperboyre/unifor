@@ -1,7 +1,7 @@
 
 <img src="https://drive.google.com/uc?id=1SOzRTjUt7cuBJpSqoK90fcAiKBrnpUJo" width="400">
 
-**Curso:** Engenharia civil
+**Curso:** Engenharia civil BIMBAO
 **Disciplina:** Racioocínio Logico e Algoritimo
 **Código/Turma:** T99831
 **Professor:** Ricardo Carubbi <br>
