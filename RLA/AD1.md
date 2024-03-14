@@ -44,16 +44,34 @@ Dadas duas variáveis, $a$ e $b$, implemente e teste um algoritmo para trocar os
 #### Fluxograma (0.25 ponto)
 
 ```mermaid
-flowchart TD
-A([INICIO]) --> B([FIM])
-```
+flowchart TD 
+A([INICIO]) --> B{{"Digite Valor de A"}}
+B --> C[/A/]
+C --> D{{"Digite valor de B"}}
+D --> E[/B/]
+E --> F(B=Z)
+F --> G(A=B)
+G --> H(Z=A)
+H --> I{{A, B}}
+I --> J([FIM])
 
 #### Pseudocódigo (0.5 ponto)
 
+### Pseudocódigo
 ```
-Algoritmo TrocaValores
-FIM_ALGORITMO
-```
+  Algoritmo Determinar A e B
+  Declare A, B,  Z: float
+  INICÍO_ALGORíTMO 
+  ESCREVA "Digite o valor de A" 
+  LEIA A
+  ESCREVA "Digite valor de B"
+  LEIA B
+  B=Z 
+  B=A
+  A==Z
+  FIM_ALGORÌTMO
+  
+  ```
 
 #### Teste de mesa (0.25 ponto)
 
