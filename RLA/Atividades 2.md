@@ -126,16 +126,54 @@ Elaborar um algoritmo que, dada a idade, classifique nas categorias: infantil A 
 
 #### Fluxograma (1.0 ponto)
 
-```mermaid
+```mermaid 
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{Digite a idade}}
+B --> C[\idade\]
+C --> D{idade >= '5'}
+D --FALSE--> E{{idade sem categoria}}
+D --TRUE--> F{idade <= '7'}
+E--> B
+F --TRUE--> G{{infantil A}}
+F --FALSE--> H{idade <= '10'}
+H --TRUE--> I{{infantil B}}
+H --FALSE--> J{idade <= '13'}
+J --TRUE--> K{{Juvenil A}}
+J --FALSE--> L{idade <= '17'}
+L --TRUE--> M{{Juvenil B}}
+L --FALSE--> N{{Adulto}}
+N --> O([FIM])
+M --> O
+K --> O
+I --> O
+G --> O
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
 ```
-Algoritmo ClassificaCategoria
-FIM_ALGORITMO
+1  	ALGORITMO classificaCategoria
+2  	DECLARE  idade: int 
+3  	INICIO
+4  	LEIA idade 
+5  	SE idade >= 5
+6		SE idade <= 7
+7			ESCREVA "infantil A"
+8		SENAO
+9			SE idade <= 10
+10				ESCREVA "infantil B"
+11			SENAO
+12				SE idade <= 13
+13					ESCREVA "juvenil A"
+14				SENAO
+15					SE idade <= 17
+16						ESCREVE "juvenil B"
+17					SENAO 
+16						ESCREVA "adulto"
+18	SENAO
+19		ESCREVA "idade fora de categoria"
+20		VOLTA AO INICIO
+21 	FIM
 ```
 
 #### Teste de mesa (0.5 ponto)
