@@ -55,15 +55,19 @@ Calcule a média de quatro números inteiros dados.
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B{{Digite o seu primeiro numero}}
+B --> C[/N1/]
+C --> D{{Digite o seu segundo número}}
+D --> E[/N2/]
+E --> F{{Digite o seu terceiro número}}
+F --> G[/N3/]
+G --> H{{Digite o seu ultimo número}}
+H --> I[/N4/]
+I --> J["Med = (N1 + N2 + N3 + N4)/4"]
+J --> K{{A média entre os números dados é Med}}
+K --> L([FIM])
 ```
 
-#### Pseudocódigo (1.0 ponto)
-
-```
-Algoritmo Media
-FIM_ALGORITMO
-```
 
 #### Teste de mesa (0.5 ponto)
 
