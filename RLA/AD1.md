@@ -44,43 +44,40 @@ Dadas duas variáveis, $a$ e $b$, implemente e teste um algoritmo para trocar os
 #### Fluxograma (0.25 ponto)
 
 ```mermaid
-flowchart TD 
-A([INICIO]) --> B{{"Digite Valor de A"}}
+flowchart TD
+A([INICIO]) --> B{{"Digite o valor de A"}}
 B --> C[/A/]
-C --> D{{"Digite valor de B"}}
+C --> D{{"Digite o valor de B"}}
 D --> E[/B/]
-E --> F(B=Z)
-F --> G(A=B)
-G --> H(Z=A)
+E --> F(Mem = B)
+F --> G(B = A)
+G --> H(A = Mem)
 H --> I{{A, B}}
 I --> J([FIM])
 ```
 
 #### Pseudocódigo (0.5 ponto)
 
-### Pseudocódigo
-
 ```
-  Algoritmo Determinar A e B
-  Declare A, B,  Z: float
-  INICÍO_ALGORíTMO 
-  ESCREVA "Digite o valor de A" 
-  LEIA A
-  ESCREVA "Digite valor de B"
-  LEIA B
-  B=Z 
-  B=A
-  A=Z
-  FIM_ALGORÌTMO
-  
-  ```
+Algoritmo TrocaValores
+DECLARE A, B, Mem: float
+INICIO
+ESCREVA "Digite o valor de A"
+LEIA A
+ESCREVA "Digite o valor de B"
+LEIA B
+Mem = B
+B = A
+A = Mem
+ESCREVA A, B
+FIM_ALGORITMO
+```
 
 #### Teste de mesa (0.25 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |   
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| A  | B | Mem = B | B = A | A = Mem | Saida |
+| -- | -- | -- | -- | -- | -- |
+| 10 | 4 | 4 | 10 | 4 | 4, 10
 
 ### Questão 2 - Contagem (1 ponto)
 
@@ -91,22 +88,86 @@ Será considerado aprovado o aluno que tirar $nota$ 50 ou maior (no intervalo de
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B[N_ver = 0]
+B --> C[N_aprov = 0]
+C --> D{{Digite a quanidade de notas para avaliar}}
+D --> E[/N_notas/]
+E --> F{N_notas > 0}
+F --FALSE--> G{{Digite uma quantidade válida}}
+G --> E
+F --TRUE--> H{N_notas = N_ver}
+H --TRUE--> I{{A quantidade de notas aprovadas foi N_aprov}}
+H --FALSE--> J{{Insira a nota}}
+J --> K[/nota/]
+K --> L{nota >= 50 e nota <= 100}
+L --TRUE--> M[N_aprov =+ 1]
+M --> N[N_ver =+ 1]
+L --FALSE--> N
+N --> H
+I --> Z([FIM])
 ```
 
 #### Pseudocódigo (0.5 ponto)
 
 ```
-Algoritmo ContaAprovacoes
-FIM_ALGORITMO
+Algoritimo aprovação
+DECLARE N_ver, N_aprov, N_notas, i: Int
+	notas: Float
+INICIO
+N_ver = 0
+N_aprov = 0 
+ESCREVA "Digite a quanidade de notas para avaliar"
+LEIA N_notas
+ENQUANTO N_notas <= 0 REPITA
+	ESCREVA "Digite uma quantidade válida"
+	LEIA N_notas
+PARA N_ver DE 0 ATÉ N_notas FAÇA [PASSO 1]
+	ESCREVA "Insira a nota"
+	LEIA nota
+	SE nota >= 50 E nota <= 100
+		N_aprov =+ 1
+		N_ver =+ 1
+	SENÃO
+		N_ver =+ 1
+	FIM_SE
+FIM_PARA
+ESCREVA "A quantidade de notas aprovadas foi", N_aprov
+FIM_ALGORÍRIMO
 ```
+#### Teste de mesa (0.25 ponto)  
+##### Chat GPT
+| Iteração | Ação                                              | Entrada/Saída  | N_aprov | N_ver |
+|----------|---------------------------------------------------|----------------|---------|-------|
+|         | **Inicialização das Variáveis**                   |                | 0       | 0     |
+|         | **Entrada do Número de Notas**                    | 5              |         |       |
+| 1        | Mensagem: "Insira a nota"                         |                |         |       |
+|          | Entrada: nota                                     | 70             |         |       |
+|          | Condição SE: 70 >= 50 e 70 <= 100 (verdadeiro)   |                |         |       |
+|          |  N_aprov += 1                                    |                | 1       | 1     |
+|          |  N_ver += 1                                      |                |         | 1     |
+| 2        | Mensagem: "Insira a nota"                         |                |         |       |
+|          | Entrada: nota                                     | 30             |         |       |
+|          | Condição SE: 30 >= 50 e 30 <= 100 (falso)        |                |         |       |
+|          |  N_ver += 1                                      |                |         | 2     |
+| 3        | Mensagem: "Insira a nota"                         |                |         |       |
+|          | Entrada: nota                                     | 85             |         |       |
+|          | Condição SE: 85 >= 50 e 85 <= 100 (verdadeiro)   |                |         |       |
+|          |  N_aprov += 1                                    |                | 2       | 3     |
+|          |  N_ver += 1                                      |                |         | 3     |
+| 4        | Mensagem: "Insira a nota"                         |                |         |       |
+|          | Entrada: nota                                     | 95             |         |       |
+|          | Condição SE: 95 >= 50 e 95 <= 100 (verdadeiro)   |                |         |       |
+|          |  N_aprov += 1                                    |                | 3       | 4     |
+|          |  N_ver += 1                                      |                |         | 4     |
+| 5        | Mensagem: "Insira a nota"                         |                |         |       |
+|          | Entrada: nota                                     | 40             |         |       |
+|          | Condição SE: 40 >= 50 e 40 <= 100 (falso)        |                |         |       |
+|          |  N_ver += 1                                      |                |         | 5     |
+| -        | **Saída de Resultados**                           |                |         |       |
+| -        | Mensagem: "A quantidade de notas aprovadas foi 3"|                |         |       |
 
-#### Teste de mesa (0.25 ponto)
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+
 
 ### Questão 3 - Soma de um conjunto de números (1 ponto)
 
@@ -117,22 +178,84 @@ Aceite apenas $n$ maior ou igual a zero.
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B[num_somados = 0]
+B --> C[soma = 0]
+C --> D{{Digite o número de elementos do conjunto que você quer somar}}
+D --> E[/num_som/]
+E --> F{num_som > 0}
+F--FALSE--> G{{Digite uma quantidade válida}}
+G --> E
+G --TRUE--> H{num_som = num_somados}
+H --FALSE--> I{{Digite um número}}
+I --> J[/num/]
+J --> K[soma = soma + num]
+K --> L[num_somados =+ 1]
+L --> H
+H --TRUE--> M{{A valor da soma total é soma}}
+M --> N([FIM])
 ```
 
 #### Pseudocódigo (0.5 ponto)
 
 ```
-Algoritmo ContaAprovacoes
+Algoritmo soma_de_valores
+DECLARE num_somados, num_soma: Int
+	num, soma: Float
+INICIO
+soma = 0
+ESCREVA "Digite o número de elementos do conjunto que você quer somar"
+LEIA num_soma
+ENQUANTO num_soma <= 0 FAÇA
+	ESCREVA "Digite uma quantidade válida"
+	LEIA num_soma
+FIM_ENQUANTO
+PARA num_somados DE 0 até Num_soma [PASSO 1] FAÇA
+	ESCREVA "Digite um número"
+	LEIA num
+	soma =+ num
+FIM_PARA
+ESCREVA "O valor da soma total é", soma
 FIM_ALGORITMO
 ```
 
 #### Teste de mesa (0.25 ponto)
+##### Chat GPT
 
-| nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
-|      --      |      --      |      --      |      --      |      --      | 
-| Adicione     | espaço       | se quiser    |  alinhar     | as barras    |
-| verticais,   | mas          | não é        | obrigatório. | Entendido ?  |
+| Iteração | Ação                                              | Entrada/Saída | soma | num_somados |
+|----------|---------------------------------------------------|---------------|------|-------------|
+| -        | **Inicialização das Variáveis**                   |               | 0    | 0           |
+| -        | **Entrada do Número de Elementos a Somar**        | 7             |      |             |
+| 1        | Mensagem: "Digite um número"                      |               |      |             |
+|          | Entrada: num                                      | 0.5           |      |             |
+|          |  soma += num                                     |               | 0.5  |             |
+|          |  num_somados += 1                                |               |      | 1           |
+| 2        | Mensagem: "Digite um número"                      |               |      |             |
+|          | Entrada: num                                      | -1.25         |      |             |
+|          |  soma += num                                     |               | -0.75|             |
+|          |  num_somados += 1                                |               |      | 2           |
+| 3        | Mensagem: "Digite um número"                      |               |      |             |
+|          | Entrada: num                                      | 2.75          |      |             |
+|          |  soma += num                                     |               | 2    |             |
+|          |  num_somados += 1                                |               |      | 3           |
+| 4        | Mensagem: "Digite um número"                      |               |      |             |
+|          | Entrada: num                                      | 0             |      |             |
+|          |  soma += num                                     |               | 2    |             |
+|          |  num_somados += 1                                |               |      | 4           |
+| 5        | Mensagem: "Digite um número"                      |               |      |             |
+|          | Entrada: num                                      | -3.5          |      |             |
+|          |  soma += num                                     |               | -1.5 |             |
+|          |  num_somados += 1                                |               |      | 5           |
+| 6        | Mensagem: "Digite um número"                      |               |      |             |
+|          | Entrada: num                                      | 1.75          |      |             |
+|          |  soma += num                                     |               | 0.25 |             |
+|          |  num_somados += 1                                |               |      | 6           |
+| 7        | Mensagem: "Digite um número"                      |               |      |             |
+|          | Entrada: num                                      | -2.25         |      |             |
+|          |  soma += num                                     |               | -2    |             |
+|          |  num_somados += 1                                |               |      | 7           |
+| -        | **Saída de Resultados**                           |               |      |             |
+| -        | Mensagem: "O valor da soma total é -2"            |               |      |             |
+
 
 ### Questão 4 - Cálculo de uma série (1 ponto)
 
@@ -144,16 +267,40 @@ $$ S = \frac{1}{2} + \frac{3}{4} + \frac{5}{6} + \frac{7}{8} + \dots $$
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO]) --> B[S = 0]
+B --> C[termo = 0]
+C --> D{{Digite a quantidade de termos da série que voce quer somar}}
+D --> E[/Num_termo/]
+E --> F{Num_termo > 0}
+F --FALSE--> G{{Digite uma quantidade válida}}
+G --> E
+F --TRUE--> H{Num_termo = termo}
+H --FALSE--> I[termo =+ 1]
+I --> J["S =+ (2 * termo - 1)/(2 * termo)"]
+J --> H
+H --TRUE--> K{{"O valor da soma de Num_termos termo(s) da série é S"}}
+K --> L([FIM])
 ```
 
 #### Pseudocódigo (0.5 ponto)
-
 ```
-Algoritmo ContaAprovacoes
+Algoritmo soma_da_serie
+DECLARE Num_termo, termo: Int
+	S: Float
+INICIO
+S = 0
+ESCREVA "Digite a quantidade de termos da série que você quer somar"
+LEIA Num_termo
+ENQUANTO Num_termo < 0 FAÇA
+	ESCREVA "Digite uma quantidade válida"
+	LEIA Num_termo
+FIM_ENQUANTO
+PARA termo DE 1 ATÉ Num_termo [PASSO 1] FAÇA
+	S =+ (2 * termo - 1)/(2 * termo)
+FIM_PARA
+ESCREVA "O valor da soma de", Num_termo, "termo(s) da série é", S
 FIM_ALGORITMO
 ```
-
 #### Teste de mesa (0.25 ponto)
 
 | nome_coluna1 | nome_coluna2 | nome_coluna3 | nome_coluna4 | nome_coluna5 | 
