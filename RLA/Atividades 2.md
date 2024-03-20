@@ -1,6 +1,6 @@
 
 # UNIFOR
-**Nome**: Sergio de Paiva Ximenes Filho <br>
+**Nome**: Pedro Perboyre Albuquerque Castelo <br>
 **Disciplina**: Raciocínio Lógico Algorítmo
 
 ## Exercício exemplo
