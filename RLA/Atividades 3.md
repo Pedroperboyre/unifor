@@ -125,14 +125,32 @@ Faça um algoritmo que exiba na tela uma contagem de 0 até 30, exibindo apenas 
 
 ```mermaid
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO])
+A --> B{{Começar}}
+B --> C[\n\]
+C --> D[\n = 30\]
+D --> E[\num = 0\]
+E --> F{num <= n}
+F --FALSE-->G([FIM])
+F --TRUE--> H{{"Num"+3}}
+H -->F
+
 ```
 
 #### Pseudocódigo (1.0 ponto)
 
 ```
-Algoritmo ClassificaCategoria
-FIM_ALGORITMO
+1 ALGORITMO Algoritmo ClassificaCategoria
+2 DECLARE n, num: INTEIRO
+3 INICIO
+4 ESCREVA “Começar: ”
+5 LEIA n			
+6 DECLARE n = 30
+7 num ← 0			
+8 ENQUANTO num <= n FAÇA	
+9 num + 3		
+8 FIM_ENQUANTO
+9 FIM
 ```
 
 #### Teste de mesa (0.5 ponto)
