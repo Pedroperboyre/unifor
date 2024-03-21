@@ -166,9 +166,18 @@ Por exemplo, para a sequência {12, 17, 4, -6, 8, 0}, o seu programa deve escrev
 
 #### Fluxograma (1.0 ponto)
 
-```mermaid
+```mermaid 
 flowchart TD
-A([INICIO]) --> B([FIM])
+A([INICIO])
+A --> B{{"Digite os elementos do conjunto que você quer somar"}}
+B --> C[/num_ele/]
+C --> D[/Soma = 0/]
+D --> E[[i= num_ele ATÉ n PASSO 1]]
+E --FALSE--> F{{"Seu numero é"}}
+E --TRUE--> G[soma =+ i]
+G --> E
+
+
 ```
 
 #### Pseudocódigo (1.0 ponto)
